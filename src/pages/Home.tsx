@@ -11,10 +11,65 @@ import {
   MapPin,
   Instagram,
   Facebook,
+  Store,
+  LayoutDashboard,
+  Settings,
+  ShoppingCart,
 } from "lucide-react"
 import { Link } from "react-router-dom"
 import logoArtifys from "@/assets/logoArtifysSolutions.png"
 import logoArtifysGris from "@/assets/logoArtifysSolutionsGrisBlanco.png"
+
+const plans = [
+  {
+    title: "Landing Page Informativa",
+    icon: <LayoutDashboard className="w-8 h-8 text-blue-900 mb-3" />,
+    price: "L 4,000",
+    subtitle: "(único pago)",
+    features: [
+      "Página estática (no editable)",
+      "Hosting incluido el primer año",
+      "Dominio gratis el primer año",
+      "costos de hosting y dominio al finalizar el primer año (aprox L 1,000 al año)"
+    ],
+  },
+  {
+    title: "Tienda Online Básica",
+    icon: <Store className="w-8 h-8 text-blue-900 mb-3" />,
+    price: "L 1,000",
+    subtitle: "mensual",
+    features: [
+      "Todo incluido (hosting + dominio + costos operativos)",
+      "Mientras dure el contrato",
+    ],
+  },
+  {
+    title: "Tienda Online con Carrito de Compras",
+    icon: <ShoppingCart className="w-8 h-8 text-blue-900 mb-3" />,
+    price: "L 1,300",
+    subtitle: "mensual",
+    features: [
+      "Todo incluido (hosting + dominio + costos operativos)",
+      "Mientras dure el contrato",
+      "no cuenta con pasarela de pago *actualmente",
+      "Dashboard de empleado y administracion incluido"
+
+    ],
+  },
+  {
+    title: "Sitio Web Personalizado a Medida",
+    icon: <Settings className="w-8 h-8 text-blue-900 mb-3" />,
+    price: "Precio según especificaciones",
+    subtitle: "",
+    features: [
+      "Diseño y funcionalidades adaptadas al cliente",
+      "Cotización personalizada",
+      
+    ],
+  },
+];
+
+
 // Animation variants
 const fadeInUp = {
   hidden: { opacity: 0, y: 100 },
@@ -25,24 +80,7 @@ const fadeInUp = {
   },
 }
 
-// Add new animation variants after the staggerContainer
-const slideInLeft = {
-  hidden: { opacity: 0, x: -100 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
-  },
-}
 
-const slideInRight = {
-  hidden: { opacity: 0, x: 100 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
-  },
-}
 
 const scaleUp = {
   hidden: { opacity: 0, scale: 0.8 },
@@ -69,14 +107,7 @@ interface AnimatedSectionProps {
   className?: string
 }
 
-interface ProjectCardProps {
-  title: string
-  description: string
-  icon: ReactNode
-  img?: string
-  index: number
-  link: string
-}
+
 
 interface ServiceCardProps {
   title: string
@@ -105,44 +136,6 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({ children, className =
   )
 }
 
-// Project card component
-const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, icon, img, index, link }) => {
-  return (
-    <motion.div
-      variants={index % 2 === 0 ? slideInLeft : slideInRight}
-      className="relative overflow-hidden rounded-xl shadow-2xl mb-20 border-2"
-    >
-      <div className="relative">
-        <img
-          src={img || logoArtifys}
-          alt={title}
-          width={1200}
-          height={600}
-          className="w-full h-[400px] object-cover opacity-10"
-        />
-      </div>
-
-      <div className="absolute inset-0 flex flex-col justify-center p-10 text-white">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-          className="max-w-5xl"
-        >
-          <div className="flex items-center mb-6">
-            <div className="bg-white/20 p-4 rounded-full backdrop-blur-sm mr-4">{icon}</div>
-            <h3 className="text-3xl font-bold">{title}</h3>
-          </div>
-          <p className="text-xl text-white mb-8 w-full">{description}</p>
-          <a href={link} target="_blank" className="text-blue-900 hover:bg-white font-medium text-lg px-8 bg-slate-200">
-            Ver Ejemplo
-          </a>
-        </motion.div>
-      </div>
-    </motion.div>
-  )
-}
-
 // Service card component
 const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon }) => {
   return (
@@ -160,36 +153,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon }) =
   )
 }
 
-const projects = [
-  {
-    title: "E-commerce",
-    description: "Desarrollamos tiendas online totalmente adaptadas a tu negocio, desde catálogos sencillos con carrito de compras hasta plataformas avanzadas con múltiples funciones. Ofrecemos soluciones escalables que incluyen gestión de productos, integración de pagos y opciones personalizadas como galerías de imágenes, filtros avanzados y más. Nos adaptamos a tus necesidades para brindarte la mejor experiencia de venta en línea.",
-    image: "https://pub-f664d02abdda4d49944c0443c9a67cd1.r2.dev/artifys.online.png", // Reemplaza con la ruta de la imagen
-    link: "https://artifys.online/", // Reemplaza con el enlace del proyecto
-  },
-  {
-    title: "Landing Pages",
-    description: "Creamos Landing Pages diseñadas estratégicamente para dar a conocer tu empresa de manera efectiva. Con un diseño moderno, secciones informativas y optimización para captar clientes, nuestras páginas te ayudarán a generar impacto y aumentar tu visibilidad en línea.",
-    image: "https://pub-f664d02abdda4d49944c0443c9a67cd1.r2.dev/2025-01-29_15h07_44.png", // Reemplaza con la ruta de la imagen
-    link: "https://landing-artifys.pages.dev/", // Reemplaza con el enlace del proyecto
-  },
-  // {
-  //   title: "Sistema de Gestión (En desarrollo)",
-  //   description: "Plataforma para administrar inventarios y ventas",
-  //   image: "https://pub-f664d02abdda4d49944c0443c9a67cd1.r2.dev/management-system.webp", // Reemplaza con la ruta de la imagen
-  //   link: "#", // Reemplaza con el enlace del proyecto
-  // },
-  {
-    title: "Web personalizada",
-    description: "Creamos plataformas web a medida, diseñadas específicamente para las necesidades de tu negocio. Desde sistemas de gestión de inventarios y ventas hasta portales empresariales y una interfaz intuitiva para optimizar tus procesos y mejorar la experiencia de tus clientes. Nos enfocamos en soluciones escalables, seguras y adaptadas a tu marca, garantizando un sitio web funcional, moderno y alineado con tus objetivos.",
-    image: "https://pub-f664d02abdda4d49944c0443c9a67cd1.r2.dev/management-system.webp", // Reemplaza con la ruta de la imagen
-    link: "/",
-  },
-];
-
 export default function Home() {
   return (
-    <div className="min-h-screen -mt-16 bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="min-h-screen -mt-8 md:-mt-16 bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-md shadow-sm">
         <div className="container mx-auto px-4 py-4">
@@ -304,11 +270,11 @@ export default function Home() {
                 Construimos aplicaciones web innovadoras que ayudan a las empresas a crecer y tener éxito en
                 el mundo digital.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-lg py-6 px-8">
+              <div className="hidden md:flex flex-col md:flex-row gap-4">
+                <button className="w-fit bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-lg py-6 px-8">
                   Explorar Proyectos
                 </button>
-                <button className="border-blue-500 text-blue-600 hover:bg-blue-50 text-lg py-6 px-8">
+                <button className=" w-fit border-blue-500 text-blue-600 hover:bg-blue-50 text-lg py-6 px-8">
                   Contactar
                 </button>
               </div>
@@ -404,29 +370,35 @@ export default function Home() {
       <section id="proyectos" className="py-20 bg-gradient-to-br from-blue-900 to-cyan-900 text-white">
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center mb-20">
-            <div className="inline-block bg-blue-800/50 backdrop-blur-sm px-6 py-2 rounded-full mb-4">
-              <span className="text-cyan-300 font-medium">Nuestros Proyectos</span>
-            </div>
+            
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Soluciones Innovadoras</h2>
             <p className="max-w-2xl mx-auto text-blue-100 text-lg">
               Descubre nuestras soluciones echas en tecnologia web, responsivas adaptadas a todo tipo de dispositivo: Computaduras,SmartPhones,Tablets.
             </p>
           </AnimatedSection>
 
-          <div className="space-y-16">
-            {projects.map((project, index) => (
-              <div key={index}>
-
-                <ProjectCard
-                  title={project.title}
-                  description={project.description}
-                  icon={<Globe className="w-8 h-8" />}
-                  img={project.image}
-                  index={0}
-                  link={project.link}
-                />
-              </div>
-            ))}
+          <div className="max-w-6xl mx-auto text-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {plans.map((plan, index) => (
+                <div
+                  key={index}
+                  className="bg-white text-blue-900 p-6 rounded-2xl shadow-lg"
+                >
+                  <div className="flex justify-center">{plan.icon}</div>
+                  <h2 className="text-xl font-bold mb-2">{plan.title}</h2>
+                  <p className="text-2xl font-semibold">{plan.price}</p>
+                  <p className="mb-4 italic">{plan.subtitle}</p>
+                  <ul className="text-left space-y-2">
+                    {plan.features.map((feature, idx) => (
+                      <li key={idx}>• {feature}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+            <p className="mt-10 text-xl font-semibold">
+              ¡Solicita tu cotización hoy! <span className="font-bold">9595-7406</span>
+            </p>
           </div>
         </div>
       </section>
@@ -492,26 +464,7 @@ export default function Home() {
                 Crecemos junto a nuestros clientes, estableciendo relaciones sólidas basadas en la confianza y la excelencia, con la visión de convertirnos en referentes en la transformación digital de empresas de todos los sectores.
               </p>
 
-              {/* <div className="flex flex-wrap gap-4">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  className="bg-gradient-to-r from-blue-100 to-blue-50 px-6 py-3 rounded-full"
-                >
-                  <span className="text-blue-600 font-medium">50+ Proyectos Completados</span>
-                </motion.div>
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  className="bg-gradient-to-r from-cyan-100 to-cyan-50 px-6 py-3 rounded-full"
-                >
-                  <span className="text-cyan-600 font-medium">20+ Expertos en el Equipo</span>
-                </motion.div>
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  className="bg-gradient-to-r from-sky-100 to-sky-50 px-6 py-3 rounded-full"
-                >
-                  <span className="text-sky-600 font-medium">98% Satisfacción del Cliente</span>
-                </motion.div>
-              </div> */}
+
             </AnimatedSection>
           </div>
         </div>
@@ -530,59 +483,7 @@ export default function Home() {
           </AnimatedSection>
 
           <div className="flex flex-col md:flex-row gap-10">
-            <AnimatedSection className="md:w-1/2">
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1">
-                      Nombre
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Ingrese su nombre"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1">
-                      # Celular
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Ingrese su numero celular"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-slate-700 mb-1">
-                    Asunto
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Ingrese el asunto"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-1">
-                    Mensaje
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={5}
-                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Ingrese su mensaje"
-                  ></textarea>
-                </div>
-                {/* <button className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 py-6 text-lg">
-                  Send Message
-                </button> */}
-              </form>
-            </AnimatedSection>
+
 
             <AnimatedSection className="md:w-1/2">
               <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-xl h-full">
