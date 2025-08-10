@@ -190,17 +190,6 @@ export default function Home() {
                 </motion.div>
               ))}
             </motion.nav>
-
-            {/* <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-              whileHover={{ scale: 1.05 }}
-            >
-              <button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 shadow-lg shadow-blue-500/20">
-                Comenzar Ahora
-              </button>
-            </motion.div> */}
           </div>
         </div>
       </header>
@@ -337,26 +326,11 @@ export default function Home() {
               description="Sitios web personalizados creados con las últimas tecnologías para ofrecer experiencias de usuario comodas."
               icon={<Globe className="w-8 h-8 text-blue-600" />}
             />
-            {/* <ServiceCard
-              title="Mobile Applications"
-              description="Native and cross-platform mobile apps that work seamlessly across iOS and Android devices."
-              icon={<Smartphone className="w-8 h-8 text-blue-600" />}
-            /> */}
             <ServiceCard
               title="Diseño UI/UX"
               description="Diseño centrado en el usuario que se centra en crear experiencias digitales intuitivas, atractivas y accesibles."
               icon={<Layers className="w-8 h-8 text-blue-600" />}
             />
-            {/* <ServiceCard
-              title="Database Solutions"
-              description="Arquitectura y gestión de bases de datos robustas para garantizar que sus datos sean seguros, accesibles y escalables."
-              icon={<Database className="w-8 h-8 text-blue-600" />}
-            /> */}
-            {/* <ServiceCard
-              title="Web personalizada"
-              description="Soluciones web personalizadas diseñadas para abordar los desafíos y requisitos específicos de su negocio."
-              icon={<Code className="w-8 h-8 text-blue-600" />}
-            /> */}
             <ServiceCard
               title="Mantenimiento Web"
               description="Soporte continuo y actualizaciones para mantener tu sitio en óptimas condiciones."
@@ -386,7 +360,7 @@ export default function Home() {
                 >
                   <div className="flex justify-center">{plan.icon}</div>
                   <h2 className="text-xl font-bold mb-2">{plan.title}</h2>
-                  <p className="text-2xl font-semibold">{plan.price}</p>
+                  {/* <p className="text-2xl font-semibold">{plan.price}</p> */}
                   <p className="mb-4 italic">{plan.subtitle}</p>
                   <ul className="text-left space-y-2">
                     {plan.features.map((feature, idx) => (
@@ -397,7 +371,7 @@ export default function Home() {
               ))}
             </div>
             <p className="mt-10 text-xl font-semibold">
-              ¡Solicita tu cotización hoy! <span className="font-bold">9595-7406</span>
+              ¡Solicita tu cotización hoy! <span className="font-bold">+504 9331-6592</span>
             </p>
           </div>
         </div>
@@ -504,7 +478,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h4 className="font-medium text-blue-900">WhatsApp</h4>
-                      <p className="text-slate-600">+504 9595-7406</p>
+                      <p className="text-slate-600">+504 9331-6592</p>
                     </div>
                   </div>
                   <div className="flex items-start">
@@ -549,102 +523,6 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-blue-900 text-white py-12">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {/* <div>
-              <h3 className="text-xl font-bold mb-4">Artifys Solutions</h3>
-              <p className="text-blue-200 mb-4">
-                Transforming ideas into digital solutions that drive business growth and innovation.
-              </p>
-              <div className="flex space-x-4">
-                <a href="#" className="text-blue-200 hover:text-white">
-                  <Twitter className="w-5 h-5" />
-                </a>
-                <a href="#" className="text-blue-200 hover:text-white">
-                  <Linkedin className="w-5 h-5" />
-                </a>
-                <a href="#" className="text-blue-200 hover:text-white">
-                  <Github className="w-5 h-5" />
-                </a>
-              </div>
-            </div>
-            <div>
-              <h3 className="text-lg font-bold mb-4">Services</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a href="#" className="text-blue-200 hover:text-white">
-                    Web Development
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-blue-200 hover:text-white">
-                    Mobile Applications
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-blue-200 hover:text-white">
-                    UI/UX Design
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-blue-200 hover:text-white">
-                    Database Solutions
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-blue-200 hover:text-white">
-                    Custom Software
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-bold mb-4">Company</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a href="#" className="text-blue-200 hover:text-white">
-                    About Us
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-blue-200 hover:text-white">
-                    Our Team
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-blue-200 hover:text-white">
-                    Careers
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-blue-200 hover:text-white">
-                    Blog
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-blue-200 hover:text-white">
-                    Contact
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-bold mb-4">Newsletter</h3>
-              <p className="text-blue-200 mb-4">Subscribe to our newsletter for the latest updates and insights.</p>
-              <form className="flex">
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  className="px-4 py-2 rounded-l-lg focus:outline-none text-slate-800 w-full"
-                />
-                <button
-                  type="submit"
-                  className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 px-4 py-2 rounded-r-lg"
-                >
-                  Subscribe
-                </button>
-              </form>
-            </div>*/}
-          </div>
           <div className="border-t border-blue-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
             <p className="text-blue-200">&copy; {new Date().getFullYear()} Artifys Solutions. All rights reserved.</p>
             <div className="flex space-x-6 mt-4 md:mt-0">
